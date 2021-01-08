@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.gdal', name: 'gdal', version: '3.0.0'
+    implementation 'com.google.guava:guava:29.0-jre'
+    
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+application {
+    mainClass = 'ch.so.alw.futterbaulinie.App'
+}
+
+applicationDefaultJvmArgs = ["-Djava.library.path=/usr/lib/jni/"]
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
